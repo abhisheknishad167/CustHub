@@ -1,0 +1,140 @@
+
+        <div class="d-flex"><p class="invisible">-----------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            <button  type="button"  (click)="clickAddCustomer()" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success btn-lg float-right">Add</button>
+        
+        </div>
+    
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Customer Id</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Country</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">Edit</th> 
+ 
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let n of customerData">
+           <td>{{n.id}}</td>
+           <td>{{n.CustomerName}}</td>
+           <td>{{n.Country}}</td>
+           <td>{{n.CreatedDate}}</td>
+
+
+
+            <td>
+              <button  type="button" (click)="onView(n)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">View</button>
+              &nbsp;
+                <button  type="button" (click)="onEdit(n)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
+                <button  (click)="deleteCustomer(n)" class="btn btn-danger mx-3">Delete</button>
+                
+
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" *ngIf="showAdd" id="exampleModalLabel">CustomerDetails</h5>
+
+          
+          <h5 class="modal-title" *ngIf="showupdate" id="exampleModalLabel">PersonDetails</h5>
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+        <ng-container *ngIf="showView" >
+          <app-view [Id]="I" [name]="N" [country]="C" [date]="D"></app-view>
+        </ng-container>
+        <ng-container *ngIf="!showView">
+            <form [formGroup]="Value">
+              <ng-container *ngIf="showAdd">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">ID</label>
+                  <input type="text" class="form-control" formControlName="id" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                </div>
+
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Customer Name</label>
+                  <input type="text" class="form-control" formControlName="CustomerName" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Customer Country</label>
+                  <input type="text" class="form-control" formControlName="Country" id="exampleInputPassword1">
+                </div>
+              
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">First Name</label>
+                    <input type="text" class="form-control" formControlName="FirstName" id="exampleInputEmail1" aria-describedby="emailHelp">
+  
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">LastName</label>
+                    <input type="text" class="form-control" formControlName="LastName" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">City</label>
+                    <input type="text" class="form-control" formControlName="City" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">StreetAddress</label>
+                    <input type="text" class="form-control" formControlName="StreetAddress" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Phone</label>
+                    <input type="text" class="form-control" formControlName="Phone" id="exampleInputPassword1">
+                  </div>
+               
+                  
+                </ng-container>
+                <ng-container *ngIf="showupdate">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">First Name</label>
+                    <input type="text" class="form-control" formControlName="FirstName" id="exampleInputEmail1" aria-describedby="emailHelp">
+  
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">LastName</label>
+                    <input type="text" class="form-control" formControlName="LastName" id="exampleInputPassword1">
+                  </div>
+                  
+                  <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">AddressList</label>
+                    
+                      <app-address-list [City]="City" [StreetAddress]="StreetAddress" [Phone]="Phone" ></app-address-list>
+                    </div>
+
+
+
+                </ng-container>
+
+
+                
+              </form>
+            </ng-container>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" *ngIf="showAdd" (click)="postCustomerDetails()" class="btn btn-primary">Add</button>
+          <button type="button" *ngIf="showupdate" (click)="updateCustomerDetails()" class="btn btn-primary">Save</button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  

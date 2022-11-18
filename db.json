@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": 5,
+      "CustomerName": "Google",
+      "Country": "India",
+      "FirstName": "Abhishek",
+      "LastName": "Nishad",
+      "City": "Pune",
+      "StreetAddress": "108",
+      "Phone": "0987655"
+    },
+    {
+      "id": "1",
+      "CustomerName": "Tata",
+      "Country": "INdia",
+      "CreatedDate": "Tue Nov 15 2022 12:44:27 GMT+0530 (India Standard Time)",
+      "FirstName": "Rata",
+      "LastName": "Tata",
+      "City": "Mumbai",
+      "StreetAddress": "108",
+      "Phone": "0948385849"
+    },
+    {
+      "id": "2",
+      "CustomerName": "Amazon",
+      "Country": "INdia",
+      "CreatedDate": "Tue Nov 15 2022 12:45:58 GMT+0530 (India Standard Time)",
+      "FirstName": "jeff",
+      "LastName": "Bezos",
+      "City": "Bangaluru",
+      "StreetAddress": "7",
+      "Phone": "03948484857"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
